@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from "react";
+import { useFocusStore } from "./stores/focusIndex";
+import { useWindowSize } from "./stores/windowSize";
 
-function App() {
-  const [count, setCount] = useState(0)
+const items = Array.from({ length: 12 }, (_, i) => `Item ${i + 1}`);
+
+const App: React.FC = () => {
+  const { width } = useWindowSize();
+  const { focusedIndex, setFocusedIndex } = useFocusStore();
+
+  function getRowAmount(): number {
+    if (width >= 1024) return 8;
+    if (width >= 768) return 5;
+    return 3;
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      setFocusedIndex(event.key, items.length, getRowAmount());
+    };
+  
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [setFocusedIndex, getRowAmount, width]);
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className={`grid grid-cols-3 md:grid-cols-5 xl:grid-cols-8 gap-4 p-4`}>
+      {items.map((item, index) => (
+        <div
+          key={index}
+          className={`p-4 border rounded ${
+            focusedIndex === index
+              ? "border-blue-500 bg-blue-100"
+              : "border-gray-300"
+          }`}
+        >
+          {item}
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default App
+export default App;
