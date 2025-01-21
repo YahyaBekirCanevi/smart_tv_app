@@ -1,0 +1,143 @@
+[
+    {
+      "id": 1,
+      "title": "News Channel 1",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-1.png",
+      "category": "News"
+    },
+    {
+      "id": 2,
+      "title": "News Channel 2",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-2.png",
+      "category": "News"
+    },
+    {
+      "id": 3,
+      "title": "News Channel 3",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-3.png",
+      "category": "News"
+    },
+    {
+      "id": 4,
+      "title": "News Channel 4",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-4.png",
+      "category": "News"
+    },
+    {
+      "id": 5,
+      "title": "News Channel 5",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-5.png",
+      "category": "News"
+    },
+    {
+      "id": 6,
+      "title": "Sports Channel 1",
+      "timestamps": "18:00-20:00",
+      "image_url": "/assets/sports-channel-1.png",
+      "category": "Sports"
+    },
+    {
+      "id": 7,
+      "title": "Sports Channel 2",
+      "timestamps": "18:00-20:00",
+      "image_url": "/assets/sports-channel-2.png",
+      "category": "Sports"
+    },
+    {
+      "id": 8,
+      "title": "Sports Channel 3",
+      "timestamps": "18:00-20:00",
+      "image_url": "/assets/sports-channel-3.png",
+      "category": "Sports"
+    },
+    {
+      "id": 9,
+      "title": "Sports Channel 4",
+      "timestamps": "18:00-20:00",
+      "image_url": "/assets/sports-channel-4.png",
+      "category": "Sports"
+    },
+    {
+      "id": 10,
+      "title": "Sports Channel 5",
+      "timestamps": "18:00-20:00",
+      "image_url": "/assets/sports-channel-5.png",
+      "category": "Sports"
+    },
+    {
+      "id": 11,
+      "title": "Music Channel 1",
+      "timestamps": "20:00-22:00",
+      "image_url": "/assets/music-channel-1.png",
+      "category": "Music"
+    },
+    {
+      "id": 12,
+      "title": "Music Channel 2",
+      "timestamps": "20:00-22:00",
+      "image_url": "/assets/music-channel-2.png",
+      "category": "Music"
+    },
+    {
+      "id": 13,
+      "title": "News Channel 6",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-6.png",
+      "category": "News"
+    },
+    {
+      "id": 14,
+      "title": "News Channel 7",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-7.png",
+      "category": "News"
+    },
+    {
+      "id": 15,
+      "title": "News Channel 8",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-8.png",
+      "category": "News"
+    },
+    {
+      "id": 16,
+      "title": "News Channel 9",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-9.png",
+      "category": "News"
+    },
+    {
+      "id": 17,
+      "title": "News Channel 10",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-10.png",
+      "category": "News"
+    },
+    {
+      "id": 18,
+      "title": "News Channel 11",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/news-channel-11.png",
+      "category": "News"
+    },
+    {
+      "id": 19,
+      "title": "Series Channel 1",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/series-channel-1.png",
+      "category": "Series"
+    },
+    {
+      "id": 20,
+      "title": "Series Channel 2",
+      "timestamps": "16:00-18:00",
+      "image_url": "/assets/series-channel-2.png",
+      "category": "Series"
+    }
+]
+  
