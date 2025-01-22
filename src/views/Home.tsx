@@ -15,13 +15,7 @@ const Home: React.FC = () => {
     fetchChannels();
   }, [fetchChannels]);
 
-  const categories = [
-    "General",
-    "Documentary",
-    "Kids",
-    "Sports",
-    "Movies",
-  ];
+  const categories = ["General", "Documentary", "Kids", "Sports", "Movies"];
   return (
     <div className="min-h-screen max-w-full w-full" style={backgroundStyle}>
       <div className="flex align-center justify-between flex-col sm:flex-row">
