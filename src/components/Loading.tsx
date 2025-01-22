@@ -1,8 +1,9 @@
 interface LoadingProps {
     className: string;
+    color?: string;
 }
 
-const Loading: React.FC<LoadingProps> = ({ className }) => {
+const Loading: React.FC<LoadingProps> = ({ className, color='#000' }) => {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
       <radialGradient
@@ -13,11 +14,11 @@ const Loading: React.FC<LoadingProps> = ({ className }) => {
         fy=".3125"
         gradientTransform="scale(1.5)"
       >
-        <stop offset="0" stopColor="#000000"></stop>
-        <stop offset=".3" stopColor="#000000" stopOpacity=".9"></stop>
-        <stop offset=".6" stopColor="#000000" stopOpacity=".6"></stop>
-        <stop offset=".8" stopColor="#000000" stopOpacity=".3"></stop>
-        <stop offset="1" stopColor="#000000" stopOpacity="0"></stop>
+        <stop offset="0" stopColor={color}></stop>
+        <stop offset=".3" stopColor={color} stopOpacity=".9"></stop>
+        <stop offset=".6" stopColor={color} stopOpacity=".6"></stop>
+        <stop offset=".8" stopColor={color} stopOpacity=".3"></stop>
+        <stop offset="1" stopColor={color} stopOpacity="0"></stop>
       </radialGradient>
       <circle
         transform-origin="center"
@@ -46,7 +47,7 @@ const Loading: React.FC<LoadingProps> = ({ className }) => {
         transform-origin="center"
         fill="none"
         opacity=".2"
-        stroke="#000000"
+        stroke={color}
         strokeWidth="15"
         strokeLinecap="round"
         cx="100"

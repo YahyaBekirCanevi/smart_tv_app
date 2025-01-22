@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./views/Home";
 import "./App.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const App: React.FC = () => {
   return (
