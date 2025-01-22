@@ -43,7 +43,7 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
       Math.floor(availableWidth / (ITEM_WIDTH + ITEM_GAP))
     );
     setRowAmount(itemsPerRow);
-  }, [width, setRowAmount]);
+  }, [width]);
 
   useEffect(() => {
     const itemsLength = channels.length;
@@ -105,33 +105,36 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
 
   const handleLeftClick = () => {
     const current = getStartIndex(index);
-    const newIndex = current === 0 ? 0 : current - 1;
-    if (focusedIndex >= newIndex && rowIndex === index) {
-      setFocusedIndex(
-        focusedIndex === 0
-          ? channels.length - 1
-          : (focusedIndex - 1) % channels.length
-      );
+    const newIndex = Math.max(0, current - 1);
+  
+    if (rowIndex === index) {
+      const updatedFocusIndex =
+        focusedIndex > newIndex
+          ? focusedIndex - 1
+          : Math.max(0, channels.length - 1);
+  
+      setFocusedIndex(updatedFocusIndex);
     }
     setStartIndex(index, newIndex);
   };
-
+  
   const handleRightClick = () => {
     const current = getStartIndex(index);
-
-    const newIndex =
-      current < channels.length - rowAmount
-        ? current + 1
-        : channels.length - rowAmount;
-    if (focusedIndex < newIndex && rowIndex === index) {
-      setFocusedIndex(newIndex);
+    const newIndex = Math.min(
+      channels.length - Math.min(rowAmount, channels.length),
+      current + 1
+    );
+  
+    if (rowIndex === index) {
+      if (focusedIndex < newIndex) {
+        setFocusedIndex(newIndex);
+      } else {
+        setFocusedIndex((focusedIndex + 1) % channels.length);
+      }
     }
-    if (newIndex === current && rowIndex === index) {
-      setFocusedIndex((focusedIndex + 1) % channels.length);
-    } else {
-      setStartIndex(index, newIndex);
-    }
+    setStartIndex(index, newIndex);
   };
+  
 
   return (
     <div className="relative">
