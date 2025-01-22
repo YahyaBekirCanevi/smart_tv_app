@@ -18,7 +18,10 @@ const GuestLayout: React.FC<GuestLayoutProps> = ({
     <div className="min-h-screen max-w-full w-full" style={backgroundStyle}>
       <LayoutHeader />
       {contentLoading ? (
-        <Loading className={"animate-spin min-h-[80vh] w-[60px] w-full m-auto"} color="#fff" />
+        <Loading
+          className={"animate-spin min-h-[80vh] w-[60px] w-full m-auto"}
+          color="#fff"
+        />
       ) : (
         children
       )}
@@ -31,7 +34,16 @@ const LayoutHeader: React.FC = () => {
   return (
     <div className="flex align-center justify-between flex-col sm:flex-row">
       <h1 className="text-4xl font-bold text-start text-white pl-4 py-4 sm:py-8 flex align-start flex-col sm:flex-row">
-        YBC |{" "}
+        <span
+          style={{
+            borderRight: "2px dotted #f5f5f5",
+            paddingRight: "12px",
+            marginRight: 'auto',
+            display: "inline-block",
+          }}
+        >
+          YBC
+        </span>
         <span className="text-lg text-[#888] text-start px-0 sm:px-4 my-2">
           Yahya Bekir Canevi
         </span>
@@ -74,7 +86,8 @@ const Footer: React.FC = () => {
         </a>
       </div>
       <div className="text-center text-sm mt-4">
-        © {new Date().getFullYear()} <strong>Yahya Bekir Canevi</strong>. All rights reserved.
+        © {new Date().getFullYear()} <strong>Yahya Bekir Canevi</strong>. All
+        rights reserved.
       </div>
     </footer>
   );
