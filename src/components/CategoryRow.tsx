@@ -26,7 +26,6 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
     setFocusedIndex,
     setRowIndex,
     setRowAmount,
-    initializeKeyboardEvents,
   } = useFocusStore();
 
   useEffect(() => {
@@ -35,22 +34,65 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
   }, [width, setRowAmount]);
 
   useEffect(() => {
-    const cleanup = initializeKeyboardEvents(index, channels.length, maxRows);
-    return cleanup;
-  }, [initializeKeyboardEvents, index, channels.length, maxRows]);
+    const itemsLength = channels.length;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        !["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+      )
+        return;
+      if (rowIndex !== index) return;
+      //console.log(rowIndex, index, itemsLength, maxRows);
+
+      const prev = focusedIndex;
+      const row = rowIndex;
+
+      switch (event.key) {
+        case "ArrowUp":
+          setRowIndex(row > 0 ? row - 1 : 0);
+          return;
+        case "ArrowDown":
+          setRowIndex(row < maxRows - 1 ? row + 1 : maxRows - 1);
+          return;
+        case "ArrowLeft":
+          setFocusedIndex(
+            prev === 0 ? itemsLength - 1 : (prev - 1) % itemsLength
+          );
+          return;
+        case "ArrowRight":
+          setFocusedIndex((prev + 1) % itemsLength);
+          return;
+        default:
+          return;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [focusedIndex, rowIndex, index, channels.length, maxRows]);
 
   useEffect(() => {
-    const calculateStartIndex = (currentRowIndex: number) => {
-      if (currentRowIndex !== rowIndex) return;
-      
+    const handleFocusChange = () => {
+      if (rowIndex !== index) return;
+      const newFocus = Math.max(0, Math.min(focusedIndex, channels.length - 1));
+      setFocusedIndex(newFocus);
+    };
+    handleFocusChange();
+  }, [rowIndex]);
+
+  useEffect(() => {
+    const calculateStartIndex = () => {
+      if (rowIndex !== index) return;
+
       const visibleEnd = startIndex + rowAmount;
       if (focusedIndex >= visibleEnd) {
-        setStartIndex(focusedIndex - rowAmount + 1)
+        setStartIndex(focusedIndex - rowAmount + 1);
       } else if (focusedIndex < startIndex) {
-        setStartIndex(focusedIndex)
+        setStartIndex(focusedIndex);
       }
-    }
-    calculateStartIndex(index);
+    };
+    calculateStartIndex();
   }, [focusedIndex, rowAmount, index, rowIndex]);
 
   return (
