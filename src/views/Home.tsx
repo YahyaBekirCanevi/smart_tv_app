@@ -3,6 +3,10 @@ import { useChannelStore } from "../stores/channel";
 import Loading from "../components/Loading";
 import CategoryRow from "../components/CategoryRow";
 
+const backgroundStyle: React.CSSProperties = {
+  background: 'radial-gradient(circle, #1A0966 25%, #292733 100%)',
+}
+
 const Home: React.FC = () => {
   const { isLoading, fetchChannels, getChannelsByCategory } = useChannelStore();
 
@@ -11,8 +15,8 @@ const Home: React.FC = () => {
   }, [fetchChannels]);
   const categories = ["News", "Sports", "Music", "Series"];
   return (
-    <div className="mb-8">
-      <h1 className="text-2xl font-bold text-center mb-8">
+    <div className="min-h-screen" style={backgroundStyle}>
+      <h1 className="text-4xl font-bold text-start text-white pl-4 py-8">
         Channel Categories
       </h1>
       {isLoading && (

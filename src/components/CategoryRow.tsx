@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Channel } from "../models/Channel";
 import { useFocusStore } from "../stores/focusIndex";
 import { useWindowSize } from "../stores/windowSize";
 import ChannelItem from "./ChannelItem";
+import { ChevronLeft, ChevronRight } from "./ChevronArrows";
 
 interface CategoryRowProps {
   category: string;
@@ -18,7 +19,6 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
   maxRows,
 }) => {
   const { width } = useWindowSize();
-  const [startIndex, setStartIndex] = useState(0);
   const {
     focusedIndex,
     rowIndex,
@@ -26,7 +26,11 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
     setFocusedIndex,
     setRowIndex,
     setRowAmount,
+    setStartIndex,
+    getStartIndex,
   } = useFocusStore();
+
+  const startIndex = getStartIndex(index);
 
   useEffect(() => {
     const amount = width >= 1280 ? 8 : width >= 768 ? 5 : 3;
@@ -36,12 +40,9 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
   useEffect(() => {
     const itemsLength = channels.length;
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        !["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
-      )
-        return;
+      const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+      if (!keys.includes(event.key)) return;
       if (rowIndex !== index) return;
-      //console.log(rowIndex, index, itemsLength, maxRows);
 
       const prev = focusedIndex;
       const row = rowIndex;
@@ -87,37 +88,82 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
 
       const visibleEnd = startIndex + rowAmount;
       if (focusedIndex >= visibleEnd) {
-        setStartIndex(focusedIndex - rowAmount + 1);
+        setStartIndex(index, focusedIndex - rowAmount + 1);
       } else if (focusedIndex < startIndex) {
-        setStartIndex(focusedIndex);
+        setStartIndex(index, focusedIndex);
       }
     };
     calculateStartIndex();
-  }, [focusedIndex, rowAmount, index, rowIndex]);
+  }, [focusedIndex, rowAmount, index, rowIndex, startIndex, setStartIndex]);
+
+  const handleLeftClick = () => {
+    const current = getStartIndex(index);
+    const newIndex = current === 0 ? 0 : current - 1;
+    if (focusedIndex >= newIndex && rowIndex === index) {
+      setFocusedIndex(focusedIndex === 0 ? (channels.length - 1) : (focusedIndex - 1) % channels.length);
+    }
+    setStartIndex(index, newIndex);
+  };
+
+  const handleRightClick = () => {
+    const current = getStartIndex(index);
+
+    const newIndex =
+      current < channels.length - rowAmount
+        ? current + 1
+        : channels.length - rowAmount;
+    if (focusedIndex < newIndex && rowIndex === index) {
+      setFocusedIndex(newIndex);
+    }
+    if(newIndex === current) {
+      setFocusedIndex((focusedIndex + 1) % channels.length)
+    } else {
+      setStartIndex(index, newIndex);
+    }
+  };
 
   return (
-    <div>
-      <h1 className="text-xl font-bold text-center mb-2">
-        focusedIndex: {focusedIndex} rowIndex: {rowIndex}
+    <div className="relative">
+      <h1 className="text-xl font-bold text-start text-white ml-4">
+        {category}
       </h1>
-      <h1 className="text-xl font-bold text-start ml-4">{category}</h1>
-      <div
-        className={`grid grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8 gap-4 p-4`}
-      >
-        {channels
-          .slice(startIndex, startIndex + rowAmount)
-          .map((channel, i) => (
-            <ChannelItem
-              key={channel.id}
-              channel={channel}
-              index={i + startIndex}
-              isFocused={focusedIndex === i + startIndex && rowIndex === index}
-              onClick={() => {
-                setFocusedIndex(i + startIndex);
-                setRowIndex(index);
-              }}
-            />
-          ))}
+      <div className="relative">
+        {/* Left Navigation Icon */}
+        <button
+          onClick={handleLeftClick}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-gray-500"
+        >
+          <ChevronLeft />
+        </button>
+
+        {/* Right Navigation Icon */}
+        <button
+          onClick={handleRightClick}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-gray-500"
+        >
+          <ChevronRight />
+        </button>
+        {/* Grid */}
+        <div
+          className={`grid grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8 gap-4 p-4`}
+        >
+          {channels
+            .slice(startIndex, startIndex + rowAmount)
+            .map((channel, i) => (
+              <ChannelItem
+                key={channel.id}
+                channel={channel}
+                index={i + startIndex}
+                isFocused={
+                  focusedIndex === i + startIndex && rowIndex === index
+                }
+                onClick={() => {
+                  setFocusedIndex(i + startIndex);
+                  setRowIndex(index);
+                }}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

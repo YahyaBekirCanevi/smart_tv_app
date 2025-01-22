@@ -14,11 +14,13 @@ const ChannelItem: React.FC<ChannelItemProps> = ({
   isFocused,
   onClick,
 }) => {
-  const border = isFocused ? "border-blue-500 bg-blue-100" : "border-gray-300";
+  const focused = "border-white border-2 scale-110"
+  const hovered = "hover:scale-110"
+  const border = isFocused && focused;
   return (
     <div
       key={index}
-      className={`p-2 border rounded w-[180px] h-[120px] overflow-hidden ${border}`}
+      className={`p-2 rounded w-[180px] h-[120px] overflow-hidden bg-black text-white ${hovered} ${border}`}
       onClick={onClick}
     >
       <div
@@ -26,8 +28,8 @@ const ChannelItem: React.FC<ChannelItemProps> = ({
         style={{ backgroundImage: `url(${channel.image_url})` }}
       >
         <div className="flex-1 ml-2 overflow-hidden">
-          <h3 className="text-md font-semibold truncate">{channel.title}</h3>
           <p className="text-sm text-gray-500 truncate">{channel.timestamps}</p>
+          <h3 className="text-md font-semibold truncate">{channel.title}</h3>
         </div>
       </div>
     </div>
