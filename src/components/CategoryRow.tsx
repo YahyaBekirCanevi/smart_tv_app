@@ -12,6 +12,9 @@ interface CategoryRowProps {
   maxRows: number;
 }
 
+const ITEM_WIDTH = 180;
+const ITEM_GAP = 16;
+
 const CategoryRow: React.FC<CategoryRowProps> = ({
   category,
   channels,
@@ -33,8 +36,13 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
   const startIndex = getStartIndex(index);
 
   useEffect(() => {
-    const amount = width >= 1280 ? 8 : width >= 768 ? 5 : 3;
-    setRowAmount(amount);
+    //const amount = width >= 1280 ? 8 : width >= 768 ? 5 : 3;
+    const availableWidth = width - ITEM_GAP;
+    const itemsPerRow = Math.max(
+      1,
+      Math.floor(availableWidth / (ITEM_WIDTH + ITEM_GAP))
+    );
+    setRowAmount(itemsPerRow);
   }, [width, setRowAmount]);
 
   useEffect(() => {
@@ -43,7 +51,6 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
       const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
       if (!keys.includes(event.key)) return;
       if (rowIndex !== index) return;
-
       const prev = focusedIndex;
       const row = rowIndex;
 
@@ -100,7 +107,11 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
     const current = getStartIndex(index);
     const newIndex = current === 0 ? 0 : current - 1;
     if (focusedIndex >= newIndex && rowIndex === index) {
-      setFocusedIndex(focusedIndex === 0 ? (channels.length - 1) : (focusedIndex - 1) % channels.length);
+      setFocusedIndex(
+        focusedIndex === 0
+          ? channels.length - 1
+          : (focusedIndex - 1) % channels.length
+      );
     }
     setStartIndex(index, newIndex);
   };
@@ -115,8 +126,8 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
     if (focusedIndex < newIndex && rowIndex === index) {
       setFocusedIndex(newIndex);
     }
-    if(newIndex === current) {
-      setFocusedIndex((focusedIndex + 1) % channels.length)
+    if (newIndex === current && rowIndex === index) {
+      setFocusedIndex((focusedIndex + 1) % channels.length);
     } else {
       setStartIndex(index, newIndex);
     }
@@ -131,7 +142,7 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
         {/* Left Navigation Icon */}
         <button
           onClick={handleLeftClick}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-gray-500"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-[#8886]"
         >
           <ChevronLeft />
         </button>
@@ -139,13 +150,13 @@ const CategoryRow: React.FC<CategoryRowProps> = ({
         {/* Right Navigation Icon */}
         <button
           onClick={handleRightClick}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-gray-500"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-transparent text-white p-2 rounded-full hover:bg-[#8886]"
         >
           <ChevronRight />
         </button>
         {/* Grid */}
         <div
-          className={`grid grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8 gap-4 p-4`}
+          className={`flex flex-wrap gap-4 p-4 justify-center md:justify-start`}
         >
           {channels
             .slice(startIndex, startIndex + rowAmount)

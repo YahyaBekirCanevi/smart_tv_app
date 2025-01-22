@@ -1,143 +1,156 @@
 [
-    {
-      "id": 1,
-      "title": "News Channel 1",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-1.png",
-      "category": "News"
-    },
-    {
-      "id": 2,
-      "title": "News Channel 2",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-2.png",
-      "category": "News"
-    },
-    {
-      "id": 3,
-      "title": "News Channel 3",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-3.png",
-      "category": "News"
-    },
-    {
-      "id": 4,
-      "title": "News Channel 4",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-4.png",
-      "category": "News"
-    },
-    {
-      "id": 5,
-      "title": "News Channel 5",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-5.png",
-      "category": "News"
-    },
-    {
-      "id": 6,
-      "title": "Sports Channel 1",
-      "timestamps": "18:00-20:00",
-      "image_url": "/assets/sports-channel-1.png",
-      "category": "Sports"
-    },
-    {
-      "id": 7,
-      "title": "Sports Channel 2",
-      "timestamps": "18:00-20:00",
-      "image_url": "/assets/sports-channel-2.png",
-      "category": "Sports"
-    },
-    {
-      "id": 8,
-      "title": "Sports Channel 3",
-      "timestamps": "18:00-20:00",
-      "image_url": "/assets/sports-channel-3.png",
-      "category": "Sports"
-    },
-    {
-      "id": 9,
-      "title": "Sports Channel 4",
-      "timestamps": "18:00-20:00",
-      "image_url": "/assets/sports-channel-4.png",
-      "category": "Sports"
-    },
-    {
-      "id": 10,
-      "title": "Sports Channel 5",
-      "timestamps": "18:00-20:00",
-      "image_url": "/assets/sports-channel-5.png",
-      "category": "Sports"
-    },
-    {
-      "id": 11,
-      "title": "Music Channel 1",
-      "timestamps": "20:00-22:00",
-      "image_url": "/assets/music-channel-1.png",
-      "category": "Music"
-    },
-    {
-      "id": 12,
-      "title": "Music Channel 2",
-      "timestamps": "20:00-22:00",
-      "image_url": "/assets/music-channel-2.png",
-      "category": "Music"
-    },
-    {
-      "id": 13,
-      "title": "News Channel 6",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-6.png",
-      "category": "News"
-    },
-    {
-      "id": 14,
-      "title": "News Channel 7",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-7.png",
-      "category": "News"
-    },
-    {
-      "id": 15,
-      "title": "News Channel 8",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-8.png",
-      "category": "News"
-    },
-    {
-      "id": 16,
-      "title": "News Channel 9",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-9.png",
-      "category": "News"
-    },
-    {
-      "id": 17,
-      "title": "News Channel 10",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-10.png",
-      "category": "News"
-    },
-    {
-      "id": 18,
-      "title": "News Channel 11",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/news-channel-11.png",
-      "category": "News"
-    },
-    {
-      "id": 19,
-      "title": "Series Channel 1",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/series-channel-1.png",
-      "category": "Series"
-    },
-    {
-      "id": 20,
-      "title": "Series Channel 2",
-      "timestamps": "16:00-18:00",
-      "image_url": "/assets/series-channel-2.png",
-      "category": "Series"
-    }
+  {
+    "id": 1,
+    "title": "ZDF",
+    "timestamps": "08:00-10:00",
+    "image_url": "/tv-logo/zdf-de.png",
+    "category": "General"
+  },
+  {
+    "id": 2,
+    "title": "Universal TV HD",
+    "timestamps": "10:00-12:00",
+    "image_url": "/tv-logo/universal-tv-hd-de.png",
+    "category": "General"
+  },
+  {
+    "id": 3,
+    "title": "National Geographic",
+    "timestamps": "12:00-14:00",
+    "image_url": "/tv-logo/national-geographic-de.png",
+    "category": "Documentary"
+  },
+  {
+    "id": 4,
+    "title": "DW (Deutsche Welle)",
+    "timestamps": "14:00-16:00",
+    "image_url": "/tv-logo/dw-de.png",
+    "category": "General"
+  },
+  {
+    "id": 5,
+    "title": "Discovery Channel",
+    "timestamps": "16:00-18:00",
+    "image_url": "/tv-logo/discovery-channel-de.png",
+    "category": "Documentary"
+  },
+  {
+    "id": 6,
+    "title": "Animal Planet",
+    "timestamps": "18:00-20:00",
+    "image_url": "/tv-logo/animal-planet-de.png",
+    "category": "General"
+  },
+  {
+    "id": 7,
+    "title": "TLC",
+    "timestamps": "20:00-22:00",
+    "image_url": "/tv-logo/tlc-ca.png",
+    "category": "General"
+  },
+  {
+    "id": 8,
+    "title": "Disney Channel",
+    "timestamps": "08:00-10:00",
+    "image_url": "/tv-logo/disney-channel-ca.png",
+    "category": "Kids"
+  },
+  {
+    "id": 9,
+    "title": "Boomerang",
+    "timestamps": "10:00-12:00",
+    "image_url": "/tv-logo/boomerang-ca.png",
+    "category": "Kids"
+  },
+  {
+    "id": 10,
+    "title": "Cartoon Network",
+    "timestamps": "12:00-14:00",
+    "image_url": "/tv-logo/cartoon-network-ca.png",
+    "category": "Kids"
+  },
+  {
+    "id": 11,
+    "title": "BNN Bloomberg",
+    "timestamps": "14:00-16:00",
+    "image_url": "/tv-logo/bnn-bloomberg-ca.png",
+    "category": "General"
+  },
+  {
+    "id": 12,
+    "title": "BBC Earth",
+    "timestamps": "16:00-18:00",
+    "image_url": "/tv-logo/bbc-earth-ca.png",
+    "category": "Documentary"
+  },
+  {
+    "id": 13,
+    "title": "Fight Box",
+    "timestamps": "18:00-20:00",
+    "image_url": "/tv-logo/fight-box-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 14,
+    "title": "Filmbox Arthouse",
+    "timestamps": "20:00-22:00",
+    "image_url": "/tv-logo/filmbox-arthouse-hr.png",
+    "category": "Movies"
+  },
+  {
+    "id": 15,
+    "title": "Fight Channel",
+    "timestamps": "22:00-00:00",
+    "image_url": "/tv-logo/fight-channel-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 16,
+    "title": "Planet Sport 1",
+    "timestamps": "00:00-02:00",
+    "image_url": "/tv-logo/planet-sport-1-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 17,
+    "title": "Planet Sport 2",
+    "timestamps": "02:00-04:00",
+    "image_url": "/tv-logo/planet-sport-2-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 18,
+    "title": "Planet Sport 3",
+    "timestamps": "04:00-06:00",
+    "image_url": "/tv-logo/planet-sport-3-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 19,
+    "title": "Planet Sport 4",
+    "timestamps": "06:00-08:00",
+    "image_url": "/tv-logo/planet-sport-4-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 20,
+    "title": "Planet Sport 5",
+    "timestamps": "08:00-10:00",
+    "image_url": "/tv-logo/planet-sport-5-hr.png",
+    "category": "Sports"
+  },
+  {
+    "id": 21,
+    "title": "Epic Drama",
+    "timestamps": "10:00-12:00",
+    "image_url": "/tv-logo/epic-drama-hr.png",
+    "category": "Movies"
+  },
+  {
+    "id": 22,
+    "title": "Fox Movies",
+    "timestamps": "12:00-14:00",
+    "image_url": "/tv-logo/fox-movies-hr.png",
+    "category": "Movies"
+  }
 ]
-  

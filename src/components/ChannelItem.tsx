@@ -14,21 +14,30 @@ const ChannelItem: React.FC<ChannelItemProps> = ({
   isFocused,
   onClick,
 }) => {
-  const focused = "border-white border-2 scale-110"
-  const hovered = "hover:scale-110"
-  const border = isFocused && focused;
+  const focused = "border-white border-2 scale-110";
+  const hovered = "hover:scale-110";
   return (
     <div
       key={index}
-      className={`p-2 rounded w-[180px] h-[120px] overflow-hidden bg-black text-white ${hovered} ${border}`}
+      className={`rounded w-[180px] h-[120px] shrink-0 overflow-hidden bg-black text-white ${hovered} ${
+        isFocused ? focused : ""
+      }`}
       onClick={onClick}
     >
       <div
         className="flex items-end justify-between w-full h-full"
-        style={{ backgroundImage: `url(${channel.image_url})` }}
+        style={{
+          backgroundImage: `linear-gradient(#fff0 ${
+            isFocused ? "10%" : "30%"
+          }, #000 100%), url(${channel.image_url})`,
+          backgroundSize: "contain", // Scale background image on focus
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundColor: "#555",
+        }}
       >
         <div className="flex-1 ml-2 overflow-hidden">
-          <p className="text-sm text-gray-500 truncate">{channel.timestamps}</p>
+          <p className="text-sm text-[#999] truncate">{channel.timestamps}</p>
           <h3 className="text-md font-semibold truncate">{channel.title}</h3>
         </div>
       </div>
